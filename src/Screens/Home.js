@@ -13,7 +13,7 @@ const Item =({item, onPress},props)=> {
       
       <View style={styles.listItem}>
         <Image
-          source={item.photo}
+          source={item.photo }
           style={{width: 60, height: 60, borderRadius: 30}}
         />
         <View style={{alignItems: 'center', flex: 1}}>
