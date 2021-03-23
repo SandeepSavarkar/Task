@@ -19,7 +19,7 @@ class Auth extends Component {
   checkAuth = async () => {
     // debugger
     try {
-      let user = await AsyncStorage.getItem('user');
+      let user = await AsyncStorage.getItem('USER');
       let parsed = JSON.parse(user);
       //debugger
 
@@ -42,13 +42,15 @@ class Auth extends Component {
 
     this.setState({email: email, password: password});
 
-    let obj = {
-      name: 'Sandy',
-      email: 'sandy@gmail.com',
-      password: 'sandy123',
-    };
-    /*AsyncStorage.setItem('user',user);*/
-    AsyncStorage.setItem('user', JSON.stringify(obj));
+   // const obj = AsyncStorage.getItem('USER');
+
+    // let obj = {
+    //   name: 'Sandy',
+    //   email: 'sandy@gmail.com',
+    //   password: 'sandy123',
+    // };
+  //  /*AsyncStorage.setItem('user',user);*/
+   // AsyncStorage.setItem('user', JSON.stringify(obj));
     this.checkAuth();
   }
 

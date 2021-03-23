@@ -6,36 +6,36 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  Touchable,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Item =({item, onPress},props)=> {
+const Item = ({item, onPress}, props) => {
   return (
-      
-      <View style={styles.listItem}>
-        <Image
-          source={item.photo }
-          style={{width: 60, height: 60, borderRadius: 30}}
-        />
-        <View style={{alignItems: 'center', flex: 1}}>
-          <Text style={{fontWeight: 'bold'}}>{item.name}</Text>
-          <Text>{item.position}</Text>
-        </View>
-        <TouchableOpacity
-          onPress={onPress}
-          style={{
-            height: 50,
-            width: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }} 
-          >
-          <Text style={{color: 'green'}}>Click</Text>
-        </TouchableOpacity>
+    <View style={styles.listItem}>
+      <Image
+        source={item.photo}
+        style={{width: 60, height: 60, borderRadius: 30}}
+      />
+      <View style={{alignItems: 'center', flex: 1}}>
+        <Text style={{fontWeight: 'bold'}}>{item.name}</Text>
+        <Text>{item.position}</Text>
       </View>
+      <TouchableOpacity
+        onPress={onPress}
+        style={{
+          height: 50,
+          width: 50,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text style={{color: 'green'}}>Click</Text>
+      </TouchableOpacity>
+    </View>
   );
-}
+};
 
-export default class Home1 extends React.Component {
+export default class Home extends React.Component {
   state = {
     data: [
       {
@@ -74,20 +74,36 @@ export default class Home1 extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.headText}>Item List(Home Screen)</Text>
+        <View style={{flexDirection:'row',justifyContent:'center'}}>
+          
+          <Text style={styles.headText}>Item List(Home Screen)</Text>
+          <TouchableOpacity
+            style={{backgroundColor:'#cbd4d3',borderRadius:15,marginLeft:50}}
+            onPress={()=>this.props.navigation.navigate('Profile')}
+          >
+            <Icon name='person' style={{fontSize:35}}></Icon>
+          </TouchableOpacity>
+        </View>
+
+        
         <FlatList
           style={{flex: 1}}
           data={this.state.data}
-          renderItem={({item}) => <Item 
-          item={item} onPress={()=>this.props.navigation.navigate('Details',{
-              name : item.name ,
-              position : item.position ,
-              photo : item.photo
-          })}
-          />}
-          keyExtractor={(item) => item.name} 
+          renderItem={({item}) => (
+            <Item
+              item={item}
+              onPress={() =>
+                this.props.navigation.navigate('Details', {
+                  name: item.name,
+                  position: item.position,
+                  photo: item.photo,
+                })
+              }
+            
+            />
+          )}
+          keyExtractor={(item) => item.name}
         />
-
       </View>
     );
   }
@@ -99,11 +115,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7',
     marginTop: 10,
   },
-  headText:{
-      justifyContent: 'center',
-      alignSelf:'center',
-        fontSize : 25 ,
-        fontWeight :'200',
+  headText: {
+    
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    fontSize: 20,
+    fontWeight: '200',
   },
   listItem: {
     margin: 10,

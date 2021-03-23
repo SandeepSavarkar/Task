@@ -7,6 +7,7 @@ import Signup from './src/Screens/Signup';
 import Auth  from './src/Authentication/Auth'
 import Home from './src/Screens/Home'
 import Details from './src/Screens/Details'
+import Profile from './src/Screens/Profile'
  // import {Image, View} from 'react-native';
 // import mainlogo from './src/assest/main_logo.jpg';
 
@@ -38,7 +39,7 @@ class App extends Component {
           <Stack.Screen name="Auth" component={Auth}></Stack.Screen>
           <Stack.Screen name="Home" component={Home}></Stack.Screen>
           <Stack.Screen name="Details" component={Details}></Stack.Screen> 
-          
+          <Stack.Screen name="Profile" component={Profile}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     );

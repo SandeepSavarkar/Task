@@ -12,6 +12,7 @@ import Input from '../components/Input';
 import Touchable from '../components/Touchable';
 import Pickr from '../components/CountryPicker';
 import signup from '../assest/logo5.png'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // export class MyForm extends Component {
 //     render({navigation}) {
@@ -163,7 +164,25 @@ class Signup extends Component {
     }
   };
 
+
+  onsubmit(){
+    //let fname,lname,email,mobile,password; 
+      let obj = {
+     fname : this.state.fname,
+     lname : this.state.lname,
+     email : this.state.email,
+     mobile : this.state.mobile,
+     password : this.state.password,
+
+    };
+    /*AsyncStorage.setItem('user',user);*/
+    AsyncStorage.setItem('USER', JSON.stringify(obj));
+    console.log(obj)
+    this.props.navigation.navigate('Login')
+  }
+
   render() {
+      
     const {container, btn} = style;
     //console.log("value"+this.state.email  )
     //console.log('Value of First Name is  :');
@@ -226,8 +245,8 @@ class Signup extends Component {
               <Touchable
                 style={btn}
                 label="Sign Up"
-                // onPress={() => this.props.navigation.navigate('Login')}
-                onPress={this.validate}
+                onPress={()=>{this.onsubmit()}}
+                //onPress={this.validate}
                 //onPress={this.onClick.bind(this)}
               />
             </View>
