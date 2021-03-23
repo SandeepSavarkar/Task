@@ -9,6 +9,7 @@ import {
   Touchable,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Item = ({item, onPress}, props) => {
   return (
@@ -29,7 +30,8 @@ const Item = ({item, onPress}, props) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text style={{color: 'green'}}>Click</Text>
+        <Text >Click</Text>
+        <Icon1 style={{color: 'green'}} name='arrow-right-circle-outline'></Icon1>
       </TouchableOpacity>
     </View>
   );

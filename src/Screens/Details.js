@@ -13,9 +13,19 @@ export default function Details(props, {route}) {
           backgroundColor: 'grey',
           padding: 10,
         }}>
-        <Image source={photo} style={{width:250,height:400}}/>
-        <Text style={{fontSize: 20, fontWeight: '100',color:'white',alignSelf:'center'}}>{name}</Text>
-        <Text style={{fontSize: 15, fontWeight: 'bold',alignSelf:'center'}}>{position}</Text>
+        <Image source={photo} style={{width: 250, height: 400}} />
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: '100',
+            color: 'white',
+            alignSelf: 'center',
+          }}>
+          {name}
+        </Text>
+        <Text style={{fontSize: 15, fontWeight: 'bold', alignSelf: 'center'}}>
+          {position}
+        </Text>
       </View>
     </View>
   );
