@@ -79,7 +79,11 @@ export default class Home1 extends React.Component {
           style={{flex: 1}}
           data={this.state.data}
           renderItem={({item}) => <Item 
-          item={item} onPress={()=>this.props.navigation.navigate('Details')}
+          item={item} onPress={()=>this.props.navigation.navigate('Details',{
+              name : item.name ,
+              position : item.position ,
+              photo : item.photo
+          })}
           />}
           keyExtractor={(item) => item.name} 
         />
