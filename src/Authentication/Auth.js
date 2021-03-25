@@ -19,7 +19,7 @@ class Auth extends Component {
   checkAuth = async () => {
     // debugger
     try {
-      let user = await AsyncStorage.getItem('USER');
+      let user = await AsyncStorage.getItem('user');
       let parsed = JSON.parse(user);
       //debugger
 

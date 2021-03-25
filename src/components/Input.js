@@ -49,31 +49,31 @@ class Input extends Component {
     }
   }
 
-  
-
-
-
-
 }
 
 const styles = StyleSheet.create({
   section: {
     flexDirection: 'row',
+    margin:10 ,
+    borderRadius : 20,
+    backgroundColor :'#e8e2e2'
   },
   ic: {
     position: 'absolute',
     left: 10,
-    top: 25,
-    fontSize: 20,
+    top: 10,
+    fontSize: 28,
+    fontWeight: 'bold'
   },
   input: {
-    height: 50,
+    height: 40,
     width: 300,
-    paddingLeft: 40,
+    paddingLeft: 50,
     justifyContent: 'space-between',
     borderColor: 'gray',
-    borderBottomWidth: 1,
-    marginTop: 10,
+    marginTop: 10 ,
+    fontSize : 18
+    
   },
   verror :{
      color : 'red',

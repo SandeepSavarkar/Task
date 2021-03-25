@@ -3,23 +3,25 @@ import { Image ,StyleSheet,View } from 'react-native'
 
 const Header =(props) => {
         return (
-            <View>
+            <View style={styles.container}>
                 <Image
-                style={styles.stretch}
+                style={styles.img}
                 source={props.image}
                 />
-          </View>
+            </View>
         )
     }
 
 
 const styles = StyleSheet.create({
-    stretch: {
-      width: 200,
-      height: 130,
+  container :{
+    justifyContent : 'center',
+    alignSelf : 'center'
+  }, 
+  img: {  
+      width: 250,
+      height: 200,
       resizeMode: 'stretch',
-      marginLeft:50,
-      marginTop:20
     }
   });
 

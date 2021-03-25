@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Picker, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import {Picker} from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const CountryPicker = (props) => {
@@ -15,7 +16,7 @@ const CountryPicker = (props) => {
         style={pickr}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
-        <Picker.Item label="Select country"  />
+        <Picker.Item label="Select"  />
         <Picker.Item label="UK" value="UK" />
         <Picker.Item label="US" value="US" />
         <Picker.Item label="India" value="india" />
@@ -27,21 +28,23 @@ const CountryPicker = (props) => {
 const styles = StyleSheet.create({
   container: {
     height: 50 ,
-    width : 300,
-    borderBottomWidth:1,
+    width : 280,
     paddingTop:0,
-    alignItems: "center"
+    alignItems: "center",
+    borderRadius : 20,
+    backgroundColor :'#e8e2e2',
+    margin : 10    
   },
   pickr :{
     height: 50,
-     width: 250 
-     
+    width: 250 ,
+    
   },
   ic :{
     position:'absolute',
     left:10,
     top:15,
-    fontSize:20
+    fontSize:20,
   }
 });
 
