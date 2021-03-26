@@ -194,14 +194,14 @@ class Signup extends Component {
     //console.log(this.state.lname);
     return (
       <SafeAreaView style={container}>
-            <ImageBackground source={require('../../assest/images/signup1.jpg')} style={style.img}>
+            {/* <ImageBackground source={require('../../assest/images/signup1.jpg')} style={style.img}> */}
 
         <ScrollView>
           <KeyboardAvoidingView
             behavior={Platform.OS === 'android' ? 'padding' : 'height'} style={{flex: 1,
               alignItems: 'center',
               justifyContent: 'center'}}>
-            <Text style ={account}>Create Account</Text>
+            {/* <Text style ={account}>Create Account</Text> */}
             
             <View style={{alignSelf:'center',width:300}}>
               
@@ -264,7 +264,7 @@ class Signup extends Component {
             </View>
           </KeyboardAvoidingView>
           </ScrollView>
-          </ImageBackground>
+          {/* </ImageBackground> */}
         
       </SafeAreaView>
     );

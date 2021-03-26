@@ -1,14 +1,15 @@
 import React from 'react'
 import {Text,Image, View,StyleSheet} from 'react-native';
-import mainlogo from '../assest/images/main_logo.jpg';
+import mainlogo from '../assest/images/salon.gif';
 import * as Animatable from 'react-native-animatable';
 //import Index from '../Authentication/'
 
 const SplashScreen = ({navigation}) => {
+
   console.log('inside splash screen')
   setTimeout(() => {
     navigation.replace('Login');
-  }, 5000);
+  }, 10000);
   return (
     <View style={styles.container}>
       <Animatable.Image animation='bounceInDown' source={mainlogo} style={styles.logo} />
@@ -27,16 +28,17 @@ const styles = StyleSheet.create({
     height: '100%'
       },
   logo : {
-    height: 150,
-    width : 150,
-    borderRadius :25
+    
+    height: 250,
+    width : 300,
+    borderRadius :100
   },
   shopName:{
     fontSize:30,
     color : "black" ,
     fontWeight : "500"
   },
-  rights:{
+  right:{
       fontSize : 15, 
       marginTop : 200
   }

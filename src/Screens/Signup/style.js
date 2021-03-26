@@ -26,6 +26,6 @@ export default StyleSheet.create({
       fontSize : 30,
       fontWeight: 'bold',
       margin : 10,
-      color : 'white'
+      color : 'black'
     }
   });
