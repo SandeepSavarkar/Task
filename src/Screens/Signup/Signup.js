@@ -188,6 +188,7 @@ class Signup extends Component {
   render() {
       
     const {container, btn,account} = style;
+    console.log('inside Signup ')
     //console.log("value"+this.state.email  )
     //console.log('Value of First Name is  :');
     //console.log(this.state.lname);

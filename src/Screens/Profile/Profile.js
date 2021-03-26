@@ -11,6 +11,8 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style'
+import { TouchableOpacity } from 'react-native';
+import { TextInput } from 'react-native';
 class  Profile extends Component {
 
     state = {
@@ -41,6 +43,21 @@ class  Profile extends Component {
           alert(error);
         }
       };
+      logOut = async () => {
+        // debugger
+          alert('Hii')
+          try {
+              await AsyncStorage.removeItem('user');
+              this.props.navigation.navigate('Login')
+          }
+          catch(exception) {
+              alert(exception)
+              return false;
+          }
+      }
+
+
+
       render(){
 
       
@@ -72,6 +89,14 @@ class  Profile extends Component {
           <Icon name="email"  size={20}/>
           <Text style={{ marginLeft: 20}}>{this.state.email}</Text>
         </View>
+      </View>
+      <View style={styles.userInfoSection}>
+        
+        <TouchableOpacity style={{width:70,height:25,backgroundColor:'orange',borderRadius:20}} onPress={this.logOut}>
+          <Text>
+            Logout
+
+            </Text></TouchableOpacity>
       </View>
 
     </SafeAreaView>

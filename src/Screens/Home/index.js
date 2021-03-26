@@ -11,11 +11,12 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors, Divider} from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 import styles from './style'
 
 const Item = ({item, onPress}, props) => {
   return (
-    <View style={styles.listItem}>
+    <Animatable.View animation='fadeInLeft'  style={styles.listItem}>
       <Image
         source={item.photo}
         style={{width: 60, height: 60, borderRadius: 30}}
@@ -37,7 +38,7 @@ const Item = ({item, onPress}, props) => {
           name="arrow-right-circle-outline"></Icon1>
       </TouchableOpacity>
       
-    </View>
+    </Animatable.View>
   );
 };
 class Home extends React.Component {
@@ -99,7 +100,7 @@ class Home extends React.Component {
           style={{flex: 1 ,width:'100%'}}
           data={this.state.data}
           renderItem={({item}) => (
-            <Item
+            <Item animation='bounceInLeft'
               item={item}
               onPress={() =>
                 this.props.navigation.navigate('Details', {

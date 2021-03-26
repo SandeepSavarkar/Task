@@ -2,8 +2,10 @@ import React from 'react'
 import {Text,Image, View,StyleSheet} from 'react-native';
 import mainlogo from '../assest/images/main_logo.jpg';
 import * as Animatable from 'react-native-animatable';
+//import Index from '../Authentication/'
 
 const SplashScreen = ({navigation}) => {
+  console.log('inside splash screen')
   setTimeout(() => {
     navigation.replace('Login');
   }, 5000);

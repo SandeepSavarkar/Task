@@ -15,6 +15,9 @@ import Input from '../../components/Input';
 import Touchable from '../../components/Touchable';
 import login_logo from '../../assest/images/salonfinal.png';
 import * as Animatable from 'react-native-animatable';
+import KeyboardShift from './KeyboardShift'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 // import validation from '../../components/ValidationUtils'
 import styles from './style';
@@ -55,8 +58,37 @@ class Login extends Component {
       //console.log('');
     }
   };
+
+
+  checkAuth = async () => {
+      // debugger
+      try {
+        let user = await AsyncStorage.getItem('user');
+        let parsed = JSON.parse(user);
+        //debugger
+        console.log(parsed)
+        if (
+          parsed.email === this.state.email &&
+          parsed.password === this.state.password
+        )
+          this.props.navigation.replace('Home');
+        else {
+          alert('Email or password is invalid');
+          this.props.navigation.navigate('Login');
+        }
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+
+
+
+
+
   render() {
     const {container, regcontainer, regbtn, btn, text, img} = styles;
+    console.log('inside Login')
 
     return (
       <SafeAreaView>
@@ -66,11 +98,11 @@ class Login extends Component {
             style={styles.img}>
             <Animatable.View animation='fadeInRight' 
               style={{
-                marginTop: 300,
+                marginTop: 100,
                 backgroundColor: 'white',
                 borderTopLeftRadius:50,
                 borderTopRightRadius:50,
-                height:400
+                height:600
               }}>
               <KeyboardAvoidingView
                 behavior={Platform.OS === 'android' ? 'padding' : 'height'} enabled={true}>
@@ -86,7 +118,6 @@ class Login extends Component {
                   }}>
                   Welcome Back
                 </Text>
-
                 <View style={styles.form}>
                   <Input
                     placeholder="Email"
@@ -94,6 +125,7 @@ class Login extends Component {
                     onChangeText={(text) => this.validateEmail(text)}
                     value={this.state.email}
                     emailerror={this.state.emailerr}
+                    
                   />
                   <Input
                     placeholder="Password"
@@ -105,12 +137,7 @@ class Login extends Component {
                   <Touchable
                     style={btn}
                     label="Login"
-                    onPress={() =>
-                      this.props.navigation.navigate('Auth', {
-                        email: this.state.email,
-                        password: this.state.password,
-                      })
-                    }
+                    onPress={()=>this.checkAuth()}
                   />
                 </View>
                 <View style={regcontainer}>

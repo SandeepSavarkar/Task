@@ -21,7 +21,6 @@ class Input extends Component {
             onChangeText={this.props.onChangeText}
             //onEndEditing={this.props.onEndEditing}
             value={this.props.value}
-            
           />
            <Text style={styles.verror}>{this.props.err}</Text>
         </View>
