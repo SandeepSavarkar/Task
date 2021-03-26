@@ -12,7 +12,7 @@ import Signup from './src/Screens/Signup/Signup';
 import Auth from './src/Authentication/Auth';
 import Home from './src/Screens/Home';
 import Details from './src/Screens/Details/Details';
-import Profile from './src/Screens//Profile/Profile';
+import Profile from './src/Screens/Profile/Profile1';
 
 // import {Image, View} from 'react-native';
 // import mainlogo from './src/assest/main_logo.jpg';

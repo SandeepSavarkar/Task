@@ -1,107 +1,92 @@
 import React, { Component } from 'react';
-import {View, SafeAreaView, StyleSheet} from 'react-native';
 import {
-  Avatar,
-  Title,
-  Caption,
+  StyleSheet,
   Text,
-  TouchableRipple,
-} from 'react-native-paper';
+  View,
+  Image,
+  TouchableOpacity
+} from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import styles from './style'
-import { TouchableOpacity } from 'react-native';
-import { TextInput } from 'react-native';
-class  Profile extends Component {
+export default class Profile extends Component {
 
-    state = {
-        fname: '',
-        lname: '',
-        email: '',
-        moblie: '',
-        password: '',
-      }
-      componentDidMount(){
-            this.displayData();
-        }
-      displayData = async () => {
-        // debugger
-        try {
-          let user = await AsyncStorage.getItem('user');
-          let parsed = JSON.parse(user);
-        
-          this.setState({
-            fname : parsed.fname,
-            lname : parsed.lname,
-            email : parsed.email,
-            mobile : parsed.mobile,
-            password : parsed.password,
-        })
-          console.log(parsed.email)      
-        } catch (error) {
-          alert(error);
-        }
-      };
-      logOut = async () => {
-        // debugger
-          alert('Hii')
-          try {
-              await AsyncStorage.removeItem('user');
-              this.props.navigation.navigate('Login')
-          }
-          catch(exception) {
-              alert(exception)
-              return false;
-          }
-      }
-
-
-
-      render(){
-
-      
-
-  return (
-    <SafeAreaView style={styles.container}>
-
-      <View style={styles.userInfoSection}>
-        <View style={{flexDirection: 'row', marginTop: 15}}>
-        <Icon name="panda"  style={{fontSize: 80}}/>
-
-          <View style={{marginLeft: 20}}>
-            <Title style={[styles.title, {
-              marginTop:15,
-              marginBottom: 5,
-            }]}>{this.state.fname + ' ' + this.state.lname}</Title>
-            <Caption style={styles.caption}></Caption>
-          </View>
+  render() {
+    return (
+      <View style={styles.container}>
+          <View style={styles.header}></View>
+          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+          <View style={styles.body}>
+            <View style={styles.bodyContent}>
+              <Text style={styles.name}>John Doe</Text>
+              <Text style={styles.info}>UX Designer / Mobile developer</Text>
+              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
+              
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text>Opcion 1</Text>  
+              </TouchableOpacity>              
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text>Opcion 2</Text> 
+              </TouchableOpacity>
+            </View>
         </View>
       </View>
-
-      <View style={styles.userInfoSection}>
-        
-        <View style={styles.row}>
-          <Icon name="phone"  size={20}/>
-          <Text style={{ marginLeft: 20}}>{this.state.mobile}</Text>
-        </View>
-        <View style={styles.row}>
-          <Icon name="email"  size={20}/>
-          <Text style={{ marginLeft: 20}}>{this.state.email}</Text>
-        </View>
-      </View>
-      <View style={styles.userInfoSection}>
-        
-        <TouchableOpacity style={{width:70,height:25,backgroundColor:'orange',borderRadius:20}} onPress={this.logOut}>
-          <Text>
-            Logout
-
-            </Text></TouchableOpacity>
-      </View>
-
-    </SafeAreaView>
-  );
-};
+    );
+  }
 }
-export default Profile;
 
+const styles = StyleSheet.create({
+  header:{
+    backgroundColor: "#00BFFF",
+    height:200,
+  },
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: "white",
+    marginBottom:10,
+    alignSelf:'center',
+    position: 'absolute',
+    marginTop:130
+  },
+  name:{
+    fontSize:22,
+    color:"#FFFFFF",
+    fontWeight:'600',
+  },
+  body:{
+    marginTop:40,
+  },
+  bodyContent: {
+    flex: 1,
+    alignItems: 'center',
+    padding:30,
+  },
+  name:{
+    fontSize:28,
+    color: "#696969",
+    fontWeight: "600"
+  },
+  info:{
+    fontSize:16,
+    color: "#00BFFF",
+    marginTop:10
+  },
+  description:{
+    fontSize:16,
+    color: "#696969",
+    marginTop:10,
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+    backgroundColor: "#00BFFF",
+  },
+});

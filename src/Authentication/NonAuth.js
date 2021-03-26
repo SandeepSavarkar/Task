@@ -11,7 +11,7 @@ import Signup from '../Screens/Signup/Signup';
 // import Auth from './src/Authentication/Auth';
 import Home from '../Screens/Home';
 import Details from '../Screens/Details/Details';
-import Profile from '../Screens//Profile/Profile';
+import Profile from '../Screens/Profile/Profile1';
 
 // import {Image, View} from 'react-native';
 // import mainlogo from './src/assest/main_logo.jpg';
@@ -36,7 +36,18 @@ class NonAuth extends Component {
         <Stack.Navigator initialRouteName="SplashScreen" >
            <Stack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown:false}}/> 
           <Stack.Screen name="Login" component={Login} options={{headerShown:false}} />
-          <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}} />
+          <Stack.Screen name="Signup" component={Signup} options={{
+            title: 'Create Account',
+            headerStyle: {
+              backgroundColor: 'white',
+            },
+            headerTintColor: 'black',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize : 25,
+              marginLeft:30
+            },
+          }} />
           {/* <Stack.Screen name="Auth" component={Auth} options={{headerShown:false}}></Stack.Screen> */}
           <Stack.Screen name="Home" component={Home} options={{headerShown:false}}></Stack.Screen>
           <Stack.Screen name="Details" component={Details} options={{headerShown:false}}></Stack.Screen>

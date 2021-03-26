@@ -17,7 +17,7 @@ import Login from '../Screens/Login/Login';
 import Signup from '../Screens/Signup/Signup';
 import Home from '../Screens/Home';
 import Details from '../Screens/Details/Details';
-import Profile from '../Screens//Profile/Profile';
+import Profile from '../Screens/Profile/Profile1';
 //import Login from '../Screens/Login';
 //import Home from '../Screens/Home';
 const Stack = createStackNavigator();
