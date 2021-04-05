@@ -6,16 +6,16 @@ import {
   KeyboardAvoidingView,
   Picker,
   ScrollView,
-  Text
+  Text,
 } from 'react-native';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import Touchable from '../../components/Touchable';
 import Pickr from '../../components/CountryPicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ImageBackground } from 'react-native';
-import { colors } from 'react-native-elements';
-import style from './style'
+import {ImageBackground} from 'react-native';
+import {colors} from 'react-native-elements';
+import style from './style';
 
 // export class MyForm extends Component {
 //     render({navigation}) {
@@ -137,74 +137,61 @@ class Signup extends Component {
     let mobile = this.state.mobile;
     let password = this.state.password;
     let cpassword = this.state.cpassword;
-    let isValidate=true
+    let isValidate = true;
 
-    if (fname == '' || fname.trim() === "" ) 
-    {
-      alert('Name cannot be empty')
-      return false; 
+    if (fname == '' || fname.trim() === '') {
+      alert('Name cannot be empty');
+      return false;
+    } else if (lname == '' || lname.trim() === '') {
+      alert('Name cannot be empty');
+      return false;
+    } else if (email == '' || email.trim() === '') {
+      alert('Email cannot be empty');
+      return false;
+    } else if (mobile == '' || mobile.trim() === '') {
+      alert('Mobile cannot be empty');
+      return false;
+    } else if (password == '' || password.trim() === '') {
+      alert('Password cannot be empty');
+      return false;
+    } else if (cpassword == '' || cpassword.trim() === '') {
+      alert('Confirm Password cannot be empty');
+      return false;
     }
-    else if (lname == '' || lname.trim() === "") 
-    {
-      alert('Name cannot be empty')
-      return false; 
-    }
-    else if (email == '' || email.trim() === "" ) {
-      alert('Email cannot be empty')
-      return false; 
-    }
-    else if (mobile == ''|| mobile.trim() === "") {
-      alert('Mobile cannot be empty')
-      return false; 
-    }
-    else if (password == '' || password.trim() === "") {
-      alert('Password cannot be empty')
-      return false; 
-    }
-    else if (cpassword == '' || cpassword.trim() === "" ) {
-      alert('Confirm Password cannot be empty')
-      return false; 
-    }
-    
   };
 
-
-  onsubmit(){
-    //let fname,lname,email,mobile,password; 
-      let obj = {
-     fname : this.state.fname,
-     lname : this.state.lname,
-     email : this.state.email,
-     mobile : this.state.mobile,
-     password : this.state.password,
-
+  onsubmit() {
+    //let fname,lname,email,mobile,password;
+    let obj = {
+      fname: this.state.fname,
+      lname: this.state.lname,
+      email: this.state.email,
+      mobile: this.state.mobile,
+      password: this.state.password,
     };
     /*AsyncStorage.setItem('user',user);*/
     AsyncStorage.setItem('user', JSON.stringify(obj));
-    console.log(obj)
-    this.props.navigation.navigate('Login')
+    console.log(obj);
+    this.props.navigation.navigate('Login');
   }
 
   render() {
-      
-    const {container, btn,account} = style;
-    console.log('inside Signup ')
+    const {container, btn, account} = style;
+    console.log('inside Signup ');
     //console.log("value"+this.state.email  )
     //console.log('Value of First Name is  :');
     //console.log(this.state.lname);
     return (
       <SafeAreaView style={container}>
-            {/* <ImageBackground source={require('../../assest/images/signup1.jpg')} style={style.img}> */}
+        {/* <ImageBackground source={require('../../assest/images/signup1.jpg')} style={style.img}> */}
 
         <ScrollView>
           <KeyboardAvoidingView
-            behavior={Platform.OS === 'android' ? 'padding' : 'height'} style={{flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center'}}>
-            {/* <Text style ={account}>Create Account</Text> */}
-            
-            <View style={{alignSelf:'center',width:300}}>
-              
+            behavior={Platform.OS === 'android' ? 'padding' : 'height'}
+            style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            {/* <Text style={account}>Create Account</Text> */}
+
+            <View style={{alignSelf: 'center', width: 300}}>
               <Input
                 placeholder="First Name"
                 icon="person"
@@ -256,16 +243,16 @@ class Signup extends Component {
               <Touchable
                 style={btn}
                 label="Sign Up"
-                onPress={()=>{this.onsubmit()}}
+                onPress={() => {
+                  this.onsubmit();
+                }}
                 //onPress={this.validate}
                 //onPress={this.onClick.bind(this)}
               />
-              
             </View>
           </KeyboardAvoidingView>
-          </ScrollView>
-          {/* </ImageBackground> */}
-        
+        </ScrollView>
+        {/* </ImageBackground> */}
       </SafeAreaView>
     );
   }
@@ -273,7 +260,5 @@ class Signup extends Component {
 
   // }
 }
-
-
 
 export default Signup;

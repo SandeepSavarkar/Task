@@ -12,11 +12,16 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {colors, Divider} from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
-import styles from './style'
+import styles from './style';
+import Details from '../Details/Details';
+import DrawerNavigation from '../../DrawerNavigation/DrawerNavigation';
+
+
+
 
 const Item = ({item, onPress}, props) => {
   return (
-    <Animatable.View animation='fadeInLeft'  style={styles.listItem}>
+    <Animatable.View animation="fadeInLeft" style={styles.listItem}>
       <Image
         source={item.photo}
         style={{width: 60, height: 60, borderRadius: 30}}
@@ -37,7 +42,6 @@ const Item = ({item, onPress}, props) => {
           style={{color: 'green', fontSize: 35}}
           name="arrow-right-circle-outline"></Icon1>
       </TouchableOpacity>
-      
     </Animatable.View>
   );
 };
@@ -80,27 +84,37 @@ class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{flexDirection: 'row',backgroundColor:'#de9a11',width:'100%' ,height: 50}}>
+        {/* <DrawerNavigation /> */}
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: '#de9a11',
+            width: '100%',
+            height: 50,
+          }}>
           <Text style={styles.headText}>My Home</Text>
-           <TouchableOpacity
+          <TouchableOpacity
             style={{
               backgroundColor: '#cbd4d3',
               borderRadius: 20,
-              height:40,
-              width:40, 
-              marginLeft: 100,  
-              marginTop: 5
+              height: 40,
+              width: 40,
+              marginLeft: 100,
+              marginTop: 5,
             }}
             onPress={() => this.props.navigation.navigate('Profile')}>
-            <Icon name="person" style={{fontSize: 30,alignSelf:'center'}}></Icon> 
-          </TouchableOpacity> 
+            <Icon
+              name="person"
+              style={{fontSize: 30, alignSelf: 'center'}}></Icon>
+          </TouchableOpacity>
         </View>
 
         <FlatList
-          style={{flex: 1 ,width:'100%'}}
+          style={{flex: 1, width: '100%'}}
           data={this.state.data}
           renderItem={({item}) => (
-            <Item animation='bounceInLeft'
+            <Item
+              animation="bounceInLeft"
               item={item}
               onPress={() =>
                 this.props.navigation.navigate('Details', {
@@ -118,5 +132,4 @@ class Home extends React.Component {
   }
 }
 
-
-export default Home ;
+export default Home;

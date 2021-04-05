@@ -26,15 +26,15 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      emailerr: '',
-      password: '',
-      passErr: '',
+      email: null,
+      emailerr: null,
+      password: null,
+      passErr: null,
     };
   }
 
   validateEmail = (text) => {
-    debugger;
+    //debugger;
     console.log(text);
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (reg.test(text) === false) {
@@ -75,9 +75,35 @@ class Login extends Component {
         this.props.navigation.navigate('Login');
       }
     } catch (error) {
-      alert(error);
+      alert("Seems like any user didn't registered yet");
     }
   };
+
+  validate() {
+    console.log(this.state.email);
+  }
+  validate = async () => {
+    let email = this.state.email;
+    let password = this.state.password;
+    let isValidate = false;
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (email == null || email == '' || email.trim() === '') {
+      alert('Email can not be empty!');
+      isValidate == false;
+      return;
+    } else if (reg.test(email) === false) {
+      alert('Invalid email address!');
+      isValidate = false;
+      return;
+    } else if (password == null || password == '') {
+      alert('Password can not be empty!');
+      isValidate = false;
+      return;
+    } else {
+      this.checkAuth();
+    }
+  }
 
   render() {
     const {container, regcontainer, regbtn, btn, text, img} = styles;
@@ -131,7 +157,8 @@ class Login extends Component {
                     <Touchable
                       style={btn}
                       label="Login"
-                      onPress={() => this.checkAuth()}
+                      //onPress={() => this.checkAuth()}
+                      onPress={this.validate}
                     />
                   </View>
                   <View style={regcontainer}>
