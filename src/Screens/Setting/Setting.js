@@ -17,7 +17,16 @@ class Settings extends React.Component {
   render() {
       return (
     <SettingsPage>
-      <SectionRow title='Setting' titleStyle={{textAlign:'center'}}>
+      
+      <SectionRow title='Setting' titleStyle={{textAlign:'center' ,backgroundColor :'white',color:'black',fontSize:25,marginTop:20}} >
+      <NavigateRow
+          text="Parent Profile"
+          leftIcon={{
+            name: 'file-document',
+            type: 'material-community',
+          }}
+          onPress={() => console.log('terms')}
+        />
         <NavigateRow
           text="Terms and conditions"
           leftIcon={{
